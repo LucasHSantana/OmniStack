@@ -1,3 +1,5 @@
+// Controller salva os likes dados por um dev
+
 const Dev = require('../models/Dev');
 
 module.exports = {
@@ -9,16 +11,19 @@ module.exports = {
         const targetDev = await Dev.findById(devId);
 
         if (!targetDev) {
+            console.log('Dev não existe!');
             return response.status(400).json({ error: 'Dev não existe' });
-        }
-
-        if (targetDev.likes.includes(loggedDev._id)){
-            console.log('DEU MATCH');
-        }
+        }        
 
         loggedDev.likes.push(targetDev._id);
 
         await loggedDev.save();
+
+        console.log(`${loggedDev.user} deu like em ${targetDev.user}`);
+
+        if (targetDev.likes.includes(loggedDev._id)){
+            console.log('DEU MATCH');
+        }
 
         return response.json(loggedDev);
     }

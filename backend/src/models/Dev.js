@@ -1,3 +1,5 @@
+// Modelo Dev - informações a serem gravadas no banco de dados
+
 const { Schema, model } = require('mongoose');
 
 const DevSchema = new Schema({

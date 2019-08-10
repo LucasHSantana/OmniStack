@@ -1,7 +1,10 @@
-const axios = require('axios');
-const Dev = require('../models/Dev');
+// Controller grava novo dev no banco de dados
+
+const axios = require('axios'); // Facilida requisições à apis
+const Dev = require('../models/Dev'); //Model
 
 module.exports = {
+    //Retorna todos os usuários que ainda não passaram pelo like ou dislike (não retorna o usuario logado também).
     async index(request, response){
         const {user} = request.headers;
 
@@ -18,13 +21,15 @@ module.exports = {
         return response.json(users);
     },
 
+    //Caso não exista, grava o novo usuário no banco de dados.
     async store(request, response){
         const { username } = request.body;
 
         const userExists = await Dev.findOne({ user: username });
 
         if (userExists){
-            return response.json(userExists);
+            console.log(`Usuário ${ username } já existe no banco de dados!`);
+            return response.json(userExists);            
         }
 
         const api_response = await axios.get(`https://api.github.com/users/${username}`);        
@@ -37,6 +42,7 @@ module.exports = {
             avatar: avatar_url,
         })
 
+        console.log(`Usuário ${dev.user} criado!`)
         return response.json(dev);
     }
 };
