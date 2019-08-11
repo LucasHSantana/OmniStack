@@ -18,6 +18,8 @@ Lembrando que é necessário estar na pasta de cada aplicação (backend, fronte
 
 **Exemplo:**
 > C:\Projeto\OmniStack\backend> yarn install
+> C:\Projeto\OmniStack\frontend> yarn install
+> C:\Projeto\OmniStack\mobile> yarn install
 
 ### Execução
 
