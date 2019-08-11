@@ -6,7 +6,7 @@
 Para poder executar o projeto é necessário ter as seguintes tecnologias instaladas:
 - **Nodejs**
 - **Editor de texto**: (Recomendado) Visual Studio Code
-- Yarn
+- **Yarn**
 
 ### Instalação
 
