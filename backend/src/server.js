@@ -5,6 +5,7 @@ const express = require('express'); // Ajuda com rotas, requisições e resposta
 const routes = require('./routes');
 const mongoose = require('mongoose'); // Odm (facilitador para trabalhar com o mongodb) 
 const cors = require('cors'); // Permite que a aplicação seja acessada por qualquer endereço
+require('dotenv').config();
 
 console.log('Configurando Server...');
 const httpServer = express();
@@ -21,7 +22,7 @@ io.on('connection', socket => {
 console.log('Configurado!');
 
 console.log('Conectando ao banco de dados...');
-mongoose.connect('mongodb+srv://omnistack:omnistack@cluster0-cgmge.mongodb.net/omnistack?retryWrites=true&w=majority', {
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-cgmge.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
     useNewUrlParser: true
 });
 console.log('Conectado!');
