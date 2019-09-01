@@ -5,7 +5,7 @@ const express = require('express'); // Ajuda com rotas, requisições e resposta
 const routes = require('./routes');
 const mongoose = require('mongoose'); // Odm (facilitador para trabalhar com o mongodb) 
 const cors = require('cors'); // Permite que a aplicação seja acessada por qualquer endereço
-require('dotenv').config();
+require('dotenv').config(); // Se refere ao arquivo .env (variáveis de ambiente)
 
 console.log('Configurando Server...');
 const httpServer = express();
